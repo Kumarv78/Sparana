@@ -1,5 +1,5 @@
 <?php
-class Sparna_Head{
+class Sparana_Head{
 	private $title;
 	private $head;
 	private $ttl;
@@ -14,10 +14,10 @@ class Sparna_Head{
 		<head> 
 <title>$this->title</title> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0  "> 
-<link rel="icon" type="image/png/jpg/jpeg" href="images/sparna.png">
+<link rel="icon" type="image/png/jpg/jpeg" href="images/Sparana.png">
 <!-- Bootstrap --> 
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="sparna.css">
+<link rel="stylesheet" type="text/css" href="Sparana.css">
  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <script src="bootstrap/js/jquery.js" type="text/javascript"></script>
@@ -39,6 +39,19 @@ class Sparna_Head{
   }
   
   </style>
+  
+      <script>
+$(document).ready(function(){
+    $("#register").click(function(){
+        $("#RegModal").modal();
+    });
+});
+$(document).ready(function(){
+    $("#login").click(function(){
+        $("#logModal").modal();
+    });
+});
+</script>
 </head>
 <body>
 EOF;
@@ -65,7 +78,7 @@ EOF;
 	}
 	
 }
-class Sparna_Navbar{
+class Sparana_Navbar{
 	private $navtitle ;
 	private $Username ;
 	private $Status ;
@@ -90,8 +103,7 @@ class Sparna_Navbar{
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li> 
-      <li><a href="#">Help</a></li> 
-      <li><a href="#">About Sparna</a></li> 
+      
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span>$this->Username</a></li>
@@ -110,8 +122,8 @@ EOF;
 	   }
 	  else { 
 		$this->navContent_post=<<<EOF
-<li><a href="#"><span class="glyphicon glyphicon-plus" id="register"></span>Register</a></li>			
-<li><a href="#"><span class="glyphicon glyphicon-log-in" id="login"></span>$this->Status</a></li>		
+<li><a href="#" id="register"><span class="glyphicon glyphicon-plus" ></span>Register</a></li>			
+<li><a href="#" id="login"><span class="glyphicon glyphicon-log-in" ></span>$this->Status</a></li>		
   </ul>
   </div>
   </nav>
@@ -199,18 +211,7 @@ EOF;
   </div>
   
   
-    <script>
-$(document).ready(function(){
-    $("#register").click(function(){
-        $("#RegModal").modal();
-    });
-});
-$(document).ready(function(){
-    $("#login").click(function(){
-        $("#logModal").modal();
-    });
-});
-</script>
+
 EOF;
  	 }	
 	
@@ -362,7 +363,7 @@ EOF;
 }
 
 
-class Sparana_Default(){
+class Sparana_Default{
   private $html_default;
   private $html_nav;
   private $html_head;
@@ -370,9 +371,9 @@ class Sparana_Default(){
     $this->html_nav=new Sparana_Navbar('Sparana','Login');  
     $this->html_head=new Sparana_Head('Sparana');
     $this->show_default();
-
+	}
     function show_default(){
-     $this->html_default->=<<<EOF
+     $this->html_default=<<<EOF
      <div class="container">
      <div class="jumbotron">
       <div class="well">
@@ -388,17 +389,17 @@ EOF;
      
     }
  }
-}
 
-//$sparna_nav = new Sparna_Navbar('Sparana');
- //echo $sparna_nav;
+
+$Sparana_nav = new Sparana_Navbar('Sparana');
+ echo $Sparana_nav;
  
-// $sparna_head = new Sparna_Head('Sparna');
-//echo $sparna_head;
+ $Sparana_head = new Sparana_Head('Sparana');
+echo $Sparana_head;
 
- //$sparana_body = new Sparana_Body('Hello',['gif.mp3','Biography.mkv','CV.docx','view.jpeg','Resume.pdf']);
-  //echo $sparana_body;
+ $sparana_body = new Sparana_Body('Hello',['gif.mp3','Biography.mkv','CV.docx','view.jpeg','Resume.pdf']);
+  echo $sparana_body;
 
- $sparana_default_body = new Sparana_Default();
-  echo $sparana_default_body;
+ //$sparana_default_body = new Sparana_Default();
+  //echo $sparana_default_body;
  ?>
