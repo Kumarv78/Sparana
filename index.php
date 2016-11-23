@@ -65,7 +65,7 @@ EOF;
 	}
 	
 }
-class Sparna_navbar{
+class Sparna_Navbar{
 	private $navtitle ;
 	private $Username ;
 	private $Status ;
@@ -298,7 +298,7 @@ EOF;
     <div class="well">
 	 <img id="imgg" src='images/video.png' class="img-responsive"></img>
       <center><p class="bg-primary">$temp</p></center>
-     <center><img id="imgg" src='images/d1.png' class="img-responsive"></img></center>	  
+     <center><a href=$url><img id="imgg" src='images/d1.png' class="img-responsive"></img></a></center>	  
     </div>
    </div> 				
 EOF;
@@ -311,7 +311,7 @@ EOF;
     <div class="well">
 	 <img id="imgg" src='images/doc.png' class="img-responsive"></img>
       <center><p class="bg-primary">$temp</p></center>
-     <center><img id="imgg" src='images/d1.png' class="img-responsive"></img></center>	  
+     <center><a href=$url><img id="imgg" src='images/d1.png' class="img-responsive"></img></a></center>	  
     </div>
    </div> 				
 EOF;
@@ -324,7 +324,7 @@ EOF;
     <div class="well">
 	 <img id="imgg" src='images/image.png' class="img-responsive"></img>
       <center><p class="bg-primary">$temp</p></center>
-     <center><img id="imgg" src='images/d1.png' class="img-responsive"></img></center>	  
+     <center><a href=$url><img id="imgg" src='images/d1.png' class="img-responsive"></img></a></center>	  
     </div>
    </div> 				
 EOF;
@@ -337,7 +337,7 @@ EOF;
     <div class="well">
 	 <img id="imgg" src='images/pdf.png' class="img-responsive"></img>
       <center><p class="bg-primary">$temp</p></center>
-     <center><img id="imgg" src='images/d1.png' class="img-responsive"></img></center>	  
+     <center><a href=$url><img id="imgg" src='images/d1.png' class="img-responsive"></img></a></center>	  
     </div>
    </div> 				
 EOF;
@@ -361,12 +361,44 @@ EOF;
 	}
 }
 
-$sparna_nav = new Sparna_navbar('Sparana');
- echo $sparna_nav;
- 
- $sparna_head = new Sparna_Head('Sparna');
-echo $sparna_head;
 
- $sparana_body = new Sparana_Body('Hello',['gif.mp3','indian.mkv','CV.docx','view.jpeg','Resume.pdf']);
-  echo $sparana_body;
+class Sparana_Default(){
+  private $html_default;
+  private $html_nav;
+  private $html_head;
+    function __construct(){
+    $this->html_nav=new Sparana_Navbar('Sparana','Login');  
+    $this->html_head=new Sparana_Head('Sparana');
+    $this->show_default();
+
+    function show_default(){
+     $this->html_default->=<<<EOF
+     <div class="container">
+     <div class="jumbotron">
+      <div class="well">
+      <img id="imgg" src='images/bg1.jpg' class="img-responsive"></img>     
+      </div>
+     </div>
+     </div>
+EOF;
+
+     }
+    function __toString(){
+    return $this->html_nav.$this->html_head.$this->html_default;
+     
+    }
+ }
+}
+
+//$sparna_nav = new Sparna_Navbar('Sparana');
+ //echo $sparna_nav;
+ 
+// $sparna_head = new Sparna_Head('Sparna');
+//echo $sparna_head;
+
+ //$sparana_body = new Sparana_Body('Hello',['gif.mp3','Biography.mkv','CV.docx','view.jpeg','Resume.pdf']);
+  //echo $sparana_body;
+
+ $sparana_default_body = new Sparana_Default();
+  echo $sparana_default_body;
  ?>
