@@ -14,14 +14,14 @@ class Sparana_Head{
 		<head> 
 <title>$this->title</title> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0  "> 
-<link rel="icon" type="image/png/jpg/jpeg" href="images/Sparana.png">
+<link rel="icon" type="image/png/jpg/jpeg" href="Sparana/images/Sparana.png">
 <!-- Bootstrap --> 
-<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="Sparana/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="Sparana.css">
  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<script src="bootstrap/js/jquery.js" type="text/javascript"></script>
- <script src="bootstrap/js/bootstrap.min.js"type="text/javascript"></script>
+<script src="Sparana/bootstrap/js/jquery.js" type="text/javascript"></script>
+ <script src="Sparana/bootstrap/js/bootstrap.min.js "type="text/javascript"></script>
 <style>
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
@@ -62,13 +62,13 @@ EOF;
   <div class="row">
   
   <div class="col-md-3">
-  <img id="img1" src='images/upload.png' class="img-responsive"></img>
+  <img id="img1" src='Sparana/images/upload.png' class="img-responsive"></img>
   </div>
   <div class="col-md-5">
        
   </div>
   <div class="col-md-4">
-  <img id="img1" src='images/scloud.png' class="img-responsive"></img>
+  <img id="img1" src='Sparana/images/scloud.png' class="img-responsive"></img>
   </div>
   </div>
 EOF;
@@ -111,7 +111,7 @@ EOF;
 	  
        if($this->Status=="Logout") {
       $this->navContent_post=<<<EOF
-  <li><a href="#"><span class="glyphicon glyphicon-off"></span>$this->Status</a></li>";
+  <li><a href="index.php?action=logout"><span class="glyphicon glyphicon-off"></span>$this->Status</a></li>";
     </ul>
   </div>
   </nav>
@@ -141,7 +141,7 @@ EOF;
 					
         </div>
         <div class="modal-body" style="padding:40px 50px;">
-          <form role="form" action="" method="Post">
+          <form role="form" action="index.php?action=do_login" method="Post">
             <div class="form-group">
               <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
               <input type="text" name="username"class="form-control" id="usrname" placeholder="Enter your Username (Ex: Vijay64)" maxlength="10">
@@ -177,12 +177,12 @@ EOF;
           <h4><span class="glyphicon glyphicon-plane"></span> Signup</h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
-          <form role="form" action="" method="Post">
+          <form role="form" action="index.php?action=do_signup" method="Post">
             
 			
 			<div class="form-group">
               <label for="usrname">Username</label>
-              <input type="text" name="username"class="form-control" id="i4" placeholder="Choose Your Username"  maxlength="10" required pattern="ID20[0-9][0-9]0[0-9][0-9][0-9]">
+              <input type="text" name="username" class="form-control" id="i4" placeholder="Choose Your Username"  maxlength="10" required >
             </div>
 		
 			
@@ -257,13 +257,13 @@ EOF;
 		<div class="row">
 		
 		<div class="col-md-3">
-         <form role="form" action="" method="Post">
+         <form role="form" action="index.php?action=upload" method="POST" enctype="multipart/form-data">
             <div class="form-group">
               
-              <input type="file" name="file_data"class="form-control" id="file_data"  maxlength="10">
+              <input type="file" name="file_name" class="form-control" id="file_data">
             </div>
             
-              <button type="submit" class="btn btn-success btn-block" id="uploadbt"><span class="glyphicon glyphicon-upload"></span>GO</button>
+              <button type="submit" class="btn btn-success btn-block" id="uploadbt"><span class="glyphicon glyphicon-upload"></span>Upload Now</button>
           </form>
 		  </div>
 		  </div>
@@ -279,15 +279,15 @@ EOF;
         $length_file_arr=sizeof($this->file_arr);
 		for($i=0;$i<$length_file_arr;$i++){
 			$temp=$this->file_arr[$i];
-			$url='index.php?action=upload&id='.($i+1);
+			$url='index.php?action=download&file_name='.$temp;
 			$ext=pathinfo($temp)['extension'];
 			if($ext=='mp3'||$ext=='ogg'||$ext=='m4a'||$ext=='amr'||$ext=='wma'){
 				$this->html_body_middle.=<<<EOF
         <div class="col-md-3">
     <div class="well">
-	 <img id="imgg" src='images/music.png' class="img-responsive"></img>
+	 <img id="imgg" src='Sparana/images/music.png' class="img-responsive"></img>
       <center><p class="bg-primary">$temp</p><center>
-     <center><a href=$url><img id="imgg" src='images/d1.png' class="img-responsive"></img></a></center>	  
+     <center><a href=$url><img id="imgg" src='Sparana/images/d1.png' class="img-responsive"></img></a></center>	  
     </div>
    </div>                        
 EOF;
@@ -297,22 +297,22 @@ EOF;
 				$this->html_body_middle.=<<<EOF
                      <div class="col-md-3">
     <div class="well">
-	 <img id="imgg" src='images/video.png' class="img-responsive"></img>
+	 <img id="imgg" src='Sparana/images/video.png' class="img-responsive"></img>
       <center><p class="bg-primary">$temp</p></center>
-     <center><a href=$url><img id="imgg" src='images/d1.png' class="img-responsive"></img></a></center>	  
+     <center><a href=$url><img id="imgg" src='Sparana/images/d1.png' class="img-responsive"></img></a></center>	  
     </div>
    </div> 				
 EOF;
 				
 			}
 			
-			else if($ext=='docx'||$ext=='xlsx'||$ext=='ppt'||$ext=='odt'){
+			else if($ext=='txt'|$ext=='docx'||$ext=='xlsx'||$ext=='ppt'||$ext=='odt'){
 				$this->html_body_middle.=<<<EOF
                      <div class="col-md-3">
     <div class="well">
-	 <img id="imgg" src='images/doc.png' class="img-responsive"></img>
+	 <img id="imgg" src='Sparana/images/doc.png' class="img-responsive"></img>
       <center><p class="bg-primary">$temp</p></center>
-     <center><a href=$url><img id="imgg" src='images/d1.png' class="img-responsive"></img></a></center>	  
+     <center><a href=$url><img id="imgg" src='Sparana/images/d1.png' class="img-responsive"></img></a></center>	  
     </div>
    </div> 				
 EOF;
@@ -323,9 +323,9 @@ EOF;
 				$this->html_body_middle.=<<<EOF
                      <div class="col-md-3">
     <div class="well">
-	 <img id="imgg" src='images/image.png' class="img-responsive"></img>
+	 <img id="imgg" src='Sparana/images/image.png' class="img-responsive"></img>
       <center><p class="bg-primary">$temp</p></center>
-     <center><a href=$url><img id="imgg" src='images/d1.png' class="img-responsive"></img></a></center>	  
+     <center><a href=$url><img id="imgg" src='Sparana/images/d1.png' class="img-responsive"></img></a></center>	  
     </div>
    </div> 				
 EOF;
@@ -336,9 +336,9 @@ EOF;
 				$this->html_body_middle.=<<<EOF
                      <div class="col-md-3">
     <div class="well">
-	 <img id="imgg" src='images/pdf.png' class="img-responsive"></img>
+	 <img id="imgg" src='Sparana/images/pdf.png' class="img-responsive"></img>
       <center><p class="bg-primary">$temp</p></center>
-     <center><a href=$url><img id="imgg" src='images/d1.png' class="img-responsive"></img></a></center>	  
+     <center><a href=$url><img id="imgg" src='Sparana/images/d1.png' class="img-responsive"></img></a></center>	  
     </div>
    </div> 				
 EOF;
@@ -367,17 +367,25 @@ class Sparana_Default{
   private $html_default;
   private $html_nav;
   private $html_head;
-    function __construct(){
+private  $html_message;
+    function __construct($msg=''){
     $this->html_nav=new Sparana_Navbar('Sparana','Login');  
     $this->html_head=new Sparana_Head('Sparana');
     $this->show_default();
+    $this->html_message=$msg;
 	}
     function show_default(){
      $this->html_default=<<<EOF
      <div class="container">
+		<div class="row">
+		<div class="col-md-12">
+		<p class="bg-info">$this->html_message</p>
+		</div>
+		</div>
+     <div class="container">
      <div class="jumbotron">
       <div class="well">
-      <img id="imgg" src='images/bg1.jpg' class="img-responsive"></img>     
+      <img id="imgg" src='Sparana/images/bg1.jpg' class="img-responsive"></img>     
       </div>
      </div>
      </div>
@@ -391,14 +399,14 @@ EOF;
  }
 
 
-$Sparana_nav = new Sparana_Navbar('Sparana');
- echo $Sparana_nav;
+//$Sparana_nav = new Sparana_Navbar('Sparana');
+ //echo $Sparana_nav;
  
- $Sparana_head = new Sparana_Head('Sparana');
-echo $Sparana_head;
+ //$Sparana_head = new Sparana_Head('Sparana');
+//echo $Sparana_head;
 
- $sparana_body = new Sparana_Body('Hello',['gif.mp3','Biography.mkv','CV.docx','view.jpeg','Resume.pdf']);
-  echo $sparana_body;
+ //$sparana_body = new Sparana_Body('Hello',['gif.mp3','Biography.mkv','CV.docx','view.jpeg','Resume.pdf']);
+  //echo $sparana_body;
 
  //$sparana_default_body = new Sparana_Default();
   //echo $sparana_default_body;
